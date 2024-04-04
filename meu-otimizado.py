@@ -77,9 +77,10 @@ def nova_conta(cpf_novo, numero_conta):
         print (usuario_dict)
         return usuario_dict
     else:
-        print("CPF não cadastrado.\nCadastre um novo cliente.\n")
-        print("###### Cadastro de nova conta ######\n")
-        novo_usuario()
+        opcao_cadastro = input("CPF não cadastrado.\nDeseja cadastrar um novo cliente?\n[s] Sim [n] Não\n")
+        if opcao_cadastro == "s":
+            print("###### Cadastro de nova conta ######\n")
+            novo_usuario()
     return False
 
 def listar_contas(contas):
@@ -88,7 +89,7 @@ def listar_contas(contas):
         linha = (f"""
             Agência: {"0001"}
             C/C: {conta["numero_conta"]}
-            Titular: {conta["nome"]}
+            Titular: {conta["usuario"]}
         """)
         print("=" * 100)
         print(linha)
@@ -165,3 +166,6 @@ while True:
 
     else:
         print("\nOperação inválida. Por favor, selecione novamente a opção desejada.\n")
+
+### ERROS:
+### NÃO ESTOU CONSEGUINDO GERAR A LISTA DE CONTAS
