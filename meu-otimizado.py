@@ -166,6 +166,3 @@ while True:
 
     else:
         print("\nOperação inválida. Por favor, selecione novamente a opção desejada.\n")
-
-### ERROS:
-### NÃO ESTOU CONSEGUINDO GERAR A LISTA DE CONTAS
