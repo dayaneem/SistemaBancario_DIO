@@ -77,19 +77,22 @@ def nova_conta(cpf_novo, numero_conta):
         print (usuario_dict)
         return usuario_dict
     else:
-        opcao_cadastro = input("CPF não cadastrado.\nDeseja cadastrar um novo cliente?\n[s] Sim [n] Não\n")
+        opcao_cadastro = input("CPF não cadastrado.\n\nDeseja cadastrar um novo cliente?\n[s] Sim [n] Não\n")
         if opcao_cadastro == "s":
-            print("###### Cadastro de nova conta ######\n")
+            print("\n###### Cadastro de nova conta ######\n")
+            cpf_novo = input("Informe o número do CPF (apenas números): ")
             novo_usuario()
     return False
 
 def listar_contas(contas):
-    print("###### Listar contas ######\n")
+    print("\n###### Listar contas ######\n")
     for conta in contas:
+        #import pdb; pdb.set_trace()
         linha = (f"""
             Agência: {"0001"}
-            C/C: {conta["numero_conta"]}
             Titular: {conta["usuario"]}
+            C/C: {conta["numero_conta"]}
+            
         """)
         print("=" * 100)
         print(linha)
@@ -149,7 +152,8 @@ while True:
         cpf_novo = input("Informe o número do CPF (apenas números): ")
         numero_conta += 1
         contas_bancarias = nova_conta(cpf_novo, numero_conta)
-        contas.append(contas_bancarias)
+        if contas_bancarias:
+            contas.append(contas_bancarias)
 
     elif opcao == "e":
         exibir_extrato(saldo, extrato=extrato)
