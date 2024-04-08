@@ -61,7 +61,7 @@ def novo_usuario():
 
             usuarios.append({"nome":nome, "data_nascimento":data_nascimento, "cpf":cpf_novo, "endereco":endereco})
             print("\nUsuário cadastrado com sucesso!\n")
-            print(usuarios)
+            print(usuarios[-1])
 
 def filtrando_usuario(cpf_novo):
     for usuario in usuarios:
@@ -82,17 +82,18 @@ def nova_conta(cpf_novo, numero_conta):
             print("\n###### Cadastro de nova conta ######\n")
             cpf_novo = input("Informe o número do CPF (apenas números): ")
             novo_usuario()
+            contas_bancarias = nova_conta(cpf_novo, numero_conta)
+            if contas_bancarias:
+                contas.append(contas_bancarias)
     return False
 
 def listar_contas(contas):
     print("\n###### Listar contas ######\n")
     for conta in contas:
-        #import pdb; pdb.set_trace()
         linha = (f"""
-            Agência: {"0001"}
-            Titular: {conta["usuario"]}
+            Agência: {"0001"}            
             C/C: {conta["numero_conta"]}
-            
+            Titular: {conta["usuario"]}            
         """)
         print("=" * 100)
         print(linha)
